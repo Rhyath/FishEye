@@ -1,5 +1,9 @@
-# Code base for project 6 - Front-End Developer / JavaScript React Developer paths
+# Accessible Dynamic Website Creation Project
 
-## Project set-up
+## Allows freelance photographers to display their work
 
-Nothing to install, just open `index.html`.
+Contents: 
+Homepage
+Photographer page x6
+Lightbox for photos and/or videos display - linear selection
+Modal Contact Form
