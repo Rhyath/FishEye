@@ -1,19 +1,52 @@
 
 function photographerFactory(data) {
     //constructor of an object that stores our data parameter
-    const { name, portrait } = data;
-    //storing the portrait-data in a new variable
-    const picture = `assets/photographers/${portrait}`;
+    const { name, id, city, country, tagline, price, portrait } = data;
 
+    //creating the photographer profile card for index page
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
+        const article = document.createElement('article');
+        const profilePic = document.createElement('img');
+        profilePic.setAttribute("src", portrait);
+        const h2 = document.createElement('h2');
         h2.textContent = name;
-        article.appendChild(img);
+        const h5 = document.createElement('h5');
+        h5.textContent = city + ", " + country;
+        const p_tagline = document.createElement('p');
+        p_tagline.textContent = tagline;
+        const p_price = document.createElement('small');
+        p_price.textContent = "$" + price + "/day";
+        article.appendChild(profilePic);
         article.appendChild(h2);
+        article.appendChild(h5);
+        article.appendChild(p_tagline);
+        article.appendChild(p_price);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
-// return an object that contains all the information we will be needing
+
+    //creating header info for photographer page
+    function getHeaderCardDOM() {
+        const article = document.createElement('article');
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
+        const h3 = document.createElement('h3');
+        h3.textContent = city + ", " + country;
+        const h4 = document.createElement('h4');
+        h4.textContent = tagline;
+        article.prepend(h1);
+        article.prepend(h3);
+        article.prepend(h4);
+        return(article);
+    }
+
+    function getHeaderPicDOM() {
+        const profilePic = document.createElement('img');
+        profilePic.setAttribute("src", portrait);
+        profilePic.setAttribute("border", "solid 1px grey");
+        return (profilePic);
+    }
+
+    // return an object that contains all the information we will be needing 
+    return { name, id, city, country, tagline, price, portrait, getUserCardDOM, getHeaderCardDOM, getHeaderPicDOM }
+
+}

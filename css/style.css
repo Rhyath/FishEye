@@ -1,12 +1,60 @@
 @import url("photographer.css");
 
+/*PROJECT BASIC STRUCTURE - ON SEPARATE CSS TO IMPORT ?? */
+:root { /*will require var (--description) in order to work as an attribute*/
+    --primary-text-color: #000; 
+    --secondary-text-color: #757575;
+    --secondarytxt-text-color: #525252; /* for artist description on photographer page only*/
+    --primary-accent-color: #901C1C;
+    --secondary-accent-color: #BF5138;
+    --button-text-color: #fff;
+    --active-button-color: #DB8876;
+    --profilepic-box-shadow: 5px 3px 20px lightgrey;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding: 0;
+    color: var(--primary-text-color);
+    font-size: 10px;
+    box-sizing: border-box;
 }
 
+h1 {
+    color: var(--secondary-accent-color);
+    font-size: 64px;
+}
+
+h2 {
+    color: var(--primary-accent-color);
+    font-size: 36px;
+}
+
+h3 {
+    color: var(--primary-accent-color);
+    font-size: 24px;
+}
+
+h4 {
+    color: var(--secondarytxt-text-color);
+    font-size: 18px;
+}
+
+h5 {
+    color: var(--primary-accent-color);
+    font-size: 13px;
+}
+
+small {
+    color: var(--secondary-text-color);
+    font-size: 9px;
+}
+
+/* -- end of basic page structure -- */
 
 header {
+    margin: 20px 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,25 +62,21 @@ header {
     height: 90px;
 }
 
-h1 {
-    color: #901C1C;
-    font-size: 36px;
-    margin-right: 100px;
-}
 
 .logo {
     height: 50px;
-    margin-left: 100px;
 }
 
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0 100px 0;
 }
 
 .photographer_section article {
+    width: 525px;
+    height: 360px;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -40,12 +84,23 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 13px;
+.photographer_section article img,
+.photographer_section article h2,
+.photographer_section article h5,
+.photographer_section article p,
+.photographer_section article small {
+    margin: 0;
+}
+
+.photographer_section article p,
+.photographer_section article small {
+    margin-top: 3px;
 }
 
 .photographer_section article img {
+    margin-bottom: 25px;
     height: 200px;
     width: 200px;
+    border-radius: 100px;
+    box-shadow: var(--profilepic-box-shadow);
 }
