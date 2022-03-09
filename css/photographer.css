@@ -12,12 +12,12 @@
     flex-direction: row;
 }
 
-article  {
+.photographer-header article  {
     display: flex;
     flex-direction: column-reverse;
 }
 
-article > * {
+.photographer-header article > * {
     margin: 10px;
 }
 
@@ -42,12 +42,57 @@ article > * {
     cursor: pointer;
 }
 
+#main h4 {
+    display: inline;
+    margin-right: 20px; 
+}
+
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 90px;
+    gap: 100px;
     margin: 0;
+    padding-top: 50px;
 }
+
+.galleryItem img {
+    background-color: var(--img-background-color);
+    margin-bottom: 10px;
+    width: 450px;
+    height: 400px;
+    border-radius: 5px;
+    object-fit: contain; /* or cover?? */
+}
+
+.info-bar {
+    width: 450px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* possibly need to be input type[checkbox] instead of i */
+.likesIcon {
+   font-size: 24px;
+   color: var(--primary-accent-color);
+}
+
+.likesIcon::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: "\f004";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding-left: 10px;
+}
+
+
 
 /* MODAL STYLING */
 .modal {

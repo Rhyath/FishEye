@@ -40,7 +40,7 @@ async function displayGallery() {
     for(let y=0; y<media.length; y++){
         if(media[y]['photographerId'] == photographers[3]['id']){
             let currentMedia = media[y];
-
+            //displsaying the item that matches parameters
             const imageModel = mediaFactory(currentMedia);
             const galleryItemDOM = imageModel.getGalleryItemDOM();
             gallery.appendChild(galleryItemDOM);
