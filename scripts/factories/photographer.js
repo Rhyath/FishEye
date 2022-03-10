@@ -3,11 +3,12 @@ function photographerFactory(data) {
     //constructor of an object that stores our data parameter
     const { name, id, city, country, tagline, price, portrait } = data;
 
+    let portraitsrc = `../../assets/photographers/${portrait}`;
     //creating the photographer profile card for index page
     function getUserCardDOM() {
         const article = document.createElement('article');
         const profilePic = document.createElement('img');
-        profilePic.setAttribute("src", portrait);
+        profilePic.setAttribute("src", portraitsrc);
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const h5 = document.createElement('h5');
@@ -41,12 +42,18 @@ function photographerFactory(data) {
 
     function getHeaderPicDOM() {
         const profilePic = document.createElement('img');
-        profilePic.setAttribute("src", portrait);
+        profilePic.setAttribute("src", portraitsrc);
         profilePic.setAttribute("border", "solid 1px grey");
         return (profilePic);
     }
 
+    function getPricetagDOM() {
+        const priceInfo = document.createElement('h3');
+        priceInfo.textContent = price + '€/day';
+        return (priceInfo);
+    }
+
     // return an object that contains all the information we will be needing 
-    return { name, id, city, country, tagline, price, portrait, getUserCardDOM, getHeaderCardDOM, getHeaderPicDOM }
+    return { name, id, city, country, tagline, price, portrait, getUserCardDOM, getHeaderCardDOM, getHeaderPicDOM, getPricetagDOM }
 
 }

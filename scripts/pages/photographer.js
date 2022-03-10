@@ -10,8 +10,9 @@ async function getPageData() {
 }
 
 //calling photographer's info for header
-async function displayHeader() {
+async function displayArtistInfo() {
     const header = document.querySelector(".photograph-header");
+    const pricetagBar = document.querySelector(".pricetag");
 
     const {photographers} = await getPageData();
     //iterate through photographers array to get the selected one -- AMEND ONCE HOMEPAGE POPULATED WITH LINKS
@@ -23,9 +24,11 @@ async function displayHeader() {
         const photographerProfile = photographerFactory(photographer);
         const headerCardDOM = photographerProfile.getHeaderCardDOM();
         const headerPicDOM = photographerProfile.getHeaderPicDOM();
+        const pricetagDOM = photographerProfile.getPricetagDOM();
 
         header.prepend(headerCardDOM);
         header.append(headerPicDOM);
+        pricetagBar.append(pricetagDOM);
         }
     }
 }
@@ -38,7 +41,7 @@ async function displayGallery() {
 
     //iterating through the media array to select required one -- AMEND photographers[index] ONCE HOMEPAGE POPULATED WITH LINKS
     for(let y=0; y<media.length; y++){
-        if(media[y]['photographerId'] == photographers[3]['id']){
+        if(media[y]['photographerId'] == photographers[0]['id']){
             let currentMedia = media[y];
             //displsaying the item that matches parameters
             const imageModel = mediaFactory(currentMedia);
@@ -48,9 +51,16 @@ async function displayGallery() {
     }
 }
 
+//calculating likes total
+async function getLikesSum() {
+    const {media} = await getPageData();
+    displayGallery(media);
+    
+}
+
 async function init() {
     const {photographers} = await getPageData();
-    displayHeader(photographers);
+    displayArtistInfo(photographers);
     const {media} = await getPageData();
     displayGallery(media);
 }
