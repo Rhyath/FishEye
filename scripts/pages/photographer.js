@@ -9,15 +9,24 @@ async function getPageData() {
     }
 }
 
+//get specific photographer id from url parameters
+function getSpecificID() {
+    const urlQuery = window.location.search;
+    const urlParam = new URLSearchParams(urlQuery);
+    const currentPhotographerId = urlParam.get('photographerId');
+    return currentPhotographerId;
+}
+
 //calling photographer's info for header
 async function displayArtistInfo() {
     const header = document.querySelector(".photograph-header");
     const pricetagBar = document.querySelector(".pricetag");
 
     const {photographers} = await getPageData();
-    //iterate through photographers array to get the selected one -- AMEND ONCE HOMEPAGE POPULATED WITH LINKS
+    let currentPhotographer = getSpecificID();
+    //iterate through photographers array to get the selected one 
     for(let i=0; i<photographers.length; i++) {
-        if(photographers[i]['id'] == photographers[0]['id']){
+        if(photographers[i]['id'] == currentPhotographer){
 
         let photographer = photographers[i];
 
@@ -38,10 +47,10 @@ async function displayGallery() {
     const gallery = document.querySelector(".gallery");
     const {photographers} = await getPageData(); // SHOULD WE DO THESE TWO GLOBAL VARIABLES SO WE DONT REPEAT OURSELVES??
     const {media} = await getPageData();
-
-    //iterating through the media array to select required one -- AMEND photographers[index] ONCE HOMEPAGE POPULATED WITH LINKS
+    let currentPhotographer = getSpecificID();
+    //iterating through the media array to select required one
     for(let y=0; y<media.length; y++){
-        if(media[y]['photographerId'] == photographers[0]['id']){
+        if(media[y]['photographerId'] == currentPhotographer){
             let currentMedia = media[y];
             //displsaying the item that matches parameters
             const imageModel = mediaFactory(currentMedia);
@@ -55,7 +64,7 @@ async function displayGallery() {
 async function getLikesSum() {
     const {media} = await getPageData();
     displayGallery(media);
-    
+
 }
 
 async function init() {

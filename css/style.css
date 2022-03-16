@@ -52,6 +52,12 @@ small {
     font-size: 9px;
 }
 
+a:link, a:visited, a:hover, a:active {
+   color: unset;
+   text-decoration: unset; 
+
+}
+
 /* -- end of basic page structure -- */
 
 header {
@@ -66,6 +72,7 @@ header {
 
 .logo {
     height: 50px;
+    border-radius: 0%;
 }
 
 .photographer_section {

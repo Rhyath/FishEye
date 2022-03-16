@@ -7,6 +7,8 @@ function photographerFactory(data) {
     //creating the photographer profile card for index page
     function getUserCardDOM() {
         const article = document.createElement('article');
+        const aLink = document.createElement('a');
+        aLink.setAttribute("href", "photographer.html?photographerId=" + id);
         const profilePic = document.createElement('img');
         profilePic.setAttribute("src", portraitsrc);
         const h2 = document.createElement('h2');
@@ -17,11 +19,12 @@ function photographerFactory(data) {
         p_tagline.textContent = tagline;
         const p_price = document.createElement('small');
         p_price.textContent = "$" + price + "/day";
-        article.appendChild(profilePic);
-        article.appendChild(h2);
-        article.appendChild(h5);
-        article.appendChild(p_tagline);
-        article.appendChild(p_price);
+        aLink.appendChild(profilePic);
+        aLink.appendChild(h2);
+        aLink.appendChild(h5);
+        aLink.appendChild(p_tagline);
+        aLink.appendChild(p_price);
+        article.appendChild(aLink);
         return (article);
     }
 
@@ -34,9 +37,9 @@ function photographerFactory(data) {
         h3.textContent = city + ", " + country;
         const h4 = document.createElement('h4');
         h4.textContent = tagline;
-        article.prepend(h1);
-        article.prepend(h3);
-        article.prepend(h4);
+        article.append(h1);
+        article.append(h3);
+        article.append(h4);
         return(article);
     }
 
