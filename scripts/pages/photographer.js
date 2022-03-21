@@ -45,10 +45,12 @@ async function displayArtistInfo() {
 //calling media info for gallery
 async function displayGallery() {
     const gallery = document.querySelector(".gallery");
+    const pricetagBar = document.querySelector(".pricetag");
     const {photographers} = await getPageData(); // SHOULD WE DO THESE TWO GLOBAL VARIABLES SO WE DONT REPEAT OURSELVES??
     const {media} = await getPageData();
     let currentPhotographer = getSpecificID();
     //iterating through the media array to select required one
+    let likesSum = 0;
     for(let y=0; y<media.length; y++){
         if(media[y]['photographerId'] == currentPhotographer){
             let currentMedia = media[y];
@@ -56,15 +58,16 @@ async function displayGallery() {
             const imageModel = mediaFactory(currentMedia);
             const galleryItemDOM = imageModel.getGalleryItemDOM();
             gallery.appendChild(galleryItemDOM);
+            //calculating the total likes for photographer
+            const allLikes = currentMedia['likes'];
+            likesSum = likesSum + allLikes
         }
     }
-}
-
-//calculating likes total
-async function getLikesSum() {
-    const {media} = await getPageData();
-    displayGallery(media);
-
+    //handling the total likes element
+    let artistLikes =  document.createElement('h3');
+    artistLikes.setAttribute("class", "likesIcon");
+    artistLikes.textContent = likesSum;
+    pricetagBar.prepend(artistLikes);
 }
 
 async function init() {
