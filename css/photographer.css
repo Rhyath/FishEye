@@ -121,7 +121,10 @@ img {
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 35%;
+    position: fixed;
+    top: 100px;
+    left: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,10 +140,14 @@ img {
 
 .modal header img {
     cursor: pointer;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
 .modal header h2 {
     font-size: 64px;
+    color: var(--primary-text-color);
     font-weight: normal;
     text-align: center;
 }
@@ -153,7 +160,7 @@ form {
 }
 
 form label {
-    color: #312E2E;
+    color: var(--modaltxt-secondary-color);
     font-size: 36px;
 }
 
@@ -161,6 +168,7 @@ form div {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 5px auto;
     align-items: self-start;
     margin-bottom: 26px;
 }
@@ -170,4 +178,28 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 26px;
+}
+
+#message {
+    height: 200px;
+}
+
+/* error styling for form validation */
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 30px;
+    font-weight: bolder;
+    color: var(--error-text-color);
+    display: block;
+    margin-top: 2px;
+    opacity: 0;
+}
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+.formData[data-error-visible="true"] .textfield {
+    border: solid 5px var(--primary-accent-color);
 }

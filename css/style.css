@@ -5,6 +5,8 @@
     --primary-text-color: #000; 
     --secondary-text-color: #757575;
     --secondarytxt-text-color: #525252; /* for artist description on photographer page only*/
+    --modaltxt-secondary-color: #312E2E;
+    --error-text-color: darkred;
     --primary-accent-color: #901C1C;
     --secondary-accent-color: #BF5138;
     --button-text-color: #fff;
