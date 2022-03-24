@@ -50,9 +50,20 @@
 				</form>
 			</div>
 		</div>
+    <!-- end of contact form modal -->
+    <div id="lightbox-modal">
+      <img class="close_button" src="assets/icons/close-red.png" onclick="closeLightbox()" />
+      <div class="lightbox">
+        <img class="prev_button" src="assets/icons/previous.png" onclick="prevImage()" />
+        <div class="image_wrapper">
+        </div>
+        <img class="next_button" src="assets/icons/next.png" onclick="nextImage()" />
+      </div>
+    </div>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/factories/Media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>
