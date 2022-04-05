@@ -11,7 +11,9 @@ function mediaFactory(data) {
     gItem.setAttribute("class", "galleryItem");
     const gItemImage = document.createElement('img');
     gItemImage.setAttribute("src", imagesrc);
-   gItemImage.setAttribute("onclick", "displayLightbox()"); 
+    gItemImage.setAttribute("alt", title);
+    gItemImage.setAttribute("id", id);
+    gItemImage.setAttribute("onclick", "displayLightbox(this)");
     const gItemInfoBar = document.createElement('div');
     gItemInfoBar.setAttribute("class", "info-bar");
     const gItemTitle = document.createElement('h3');
@@ -26,18 +28,5 @@ function mediaFactory(data) {
     return (gItem);
    }
 
-/*
-   function getLightboxItemDOM() {
-    const wrapper = document.querySelector(".image_wrapper");
-    const lbImage = document.createElement('img');
-    lbImage.setAttribute("src", imagesrc);
-    const lbImageTitle = document.createElement('h3');
-    lbImageTitle.textContent = title;
-    wrapper.appendChild(lbImage);
-    wrapper.appendChild(lbImageTitle);
-    return (wrapper);
-   }
-*/
-
-   return {id, photographerId, title, image, likes, date, price,getGalleryItemDOM, /*getLightboxItemDOM*/ }
+   return {id, photographerId, title, image, likes, date, price,getGalleryItemDOM }
 }
