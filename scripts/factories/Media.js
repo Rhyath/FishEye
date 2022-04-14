@@ -9,6 +9,7 @@ function mediaFactory(data) {
    function getGalleryItemDOM() {
     const gItem = document.createElement('article');
     gItem.setAttribute("class", "galleryItem");
+    //gItem.setAttribute("onclick", "currentSlide(this)");
     const gItemImage = document.createElement('img');
     gItemImage.setAttribute("src", imagesrc);
     gItemImage.setAttribute("alt", title);
@@ -28,5 +29,14 @@ function mediaFactory(data) {
     return (gItem);
    }
 
-   return {id, photographerId, title, image, likes, date, price,getGalleryItemDOM }
+
+   function getSlidesThumbDOM() {
+    const thumbs = document.createElement('img');
+    thumbs.setAttribute("src", imagesrc);
+    thumbs.setAttribute("class", "thumbnail");
+    thumbs.setAttribute("alt", title);
+    return (thumbs);
+}
+
+   return {id, photographerId, title, image, likes, date, price,getGalleryItemDOM, getSlidesThumbDOM }
 }

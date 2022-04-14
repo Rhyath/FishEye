@@ -60,7 +60,7 @@ async function displayGallery() {
             gallery.appendChild(galleryItemDOM);
             //calculating the total likes for photographer
             const allLikes = currentMedia['likes'];
-            likesSum = likesSum + allLikes
+            likesSum = likesSum + allLikes;
         }
     }
     //handling the total likes element
@@ -70,22 +70,40 @@ async function displayGallery() {
     pricetagBar.prepend(artistLikes);
 }
 
+//calling media info for lightbox thumbnails 
+async function displayThumbnails() {
+    const slides = document.querySelector(".slide_thumb");
+    
+    const {photographers} = await getPageData();
+    const {media} = await getPageData();
+
+    let currentPhotographer = getSpecificID();
+    //iterating through the media array to select required one
+    for(let y=0; y<media.length; y++){
+        if(media[y]['photographerId'] == currentPhotographer){
+            let currentMedia = media[y];
+            //displsaying the item that matches parameters
+            const thumbModel = mediaFactory(currentMedia);
+            const thumbItemDOM = thumbModel.getSlidesThumbDOM();
+           slides.appendChild(thumbItemDOM);
+        }
+    }
+    //assign a slide id to each lightbox thumbnail
+    let arrayItem = document.querySelectorAll(".thumbnail");
+    let slideId = 1;
+    for(ai=0; ai<arrayItem.length; ai++){
+        arrayItem[ai].setAttribute("id", slideId);
+        slideId++;
+    }
+}
+
+
 async function init() {
     const {photographers} = await getPageData();
     displayArtistInfo(photographers);
     const {media} = await getPageData();
     displayGallery(media);
+    displayThumbnails(media);
 }
 
 init();
-
-/*
-const {media} = await getHeaderData();
-alert(media[0]['photographerId']);
-
-
-
-    SELECT * FROM media WHERE photographerId = photographers[i]['id]']
-
-    parse media and filter where photographerId = photographers[i]['id]']
-*/
