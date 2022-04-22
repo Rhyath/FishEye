@@ -26,9 +26,9 @@
         });
     }
 
-    async function init() {
-        const { photographers } = await getPhotographers(); //need the destructure again, as we have to pass the date as argument on next function called
-        displayData(photographers);
+    function init() {
+        
+        displayData(); //no parameter needed if object is not called - no need for async function either
     };
     
     init();

@@ -25,32 +25,21 @@ function displayLightbox(imgBtn) {
         wrapper.appendChild(lbImageCaption);
     }
     populateLightbox();
-
 }
 
-/*
-//creating the Slides functionality
-let slideIndex = 0;
-function currentSlide(){
-    slideIndex = allSlides[i].id
-    return (slideIndex);
+//identify slide number from an array
+function currentSlide() {
+//add thumbnails in an array 
+let thumbArray = [];
+for(t=0; t<allSlides.length; t++){
+    thumbArray.push(t);
+    return (thumbArray);
 }
-
-//creating image slide show
-function prevImage(){
-    let prevIndex = 0;
-    currentSlide();
-
-    prevIndex = slideIndex-1;
-    for(let s=0; s<allSlides.length; s++){
-        if(slideIndex = prevIndex && slideIndex !== 0){
-            //show image corresponding to index
-            populateLightbox(this.allSlides[s]);
-
-        }
-    }
+console.log(thumbArray);
+//iterate through array
+//select array item + or - 
+//display item
 }
-*/
 
 /*
 //calling the slide movement functions 

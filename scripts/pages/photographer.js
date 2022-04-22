@@ -72,7 +72,7 @@ async function displayGallery() {
 
 //calling media info for lightbox thumbnails 
 async function displayThumbnails() {
-    const slides = document.querySelector(".slide_thumb");
+    const slides = document.querySelector(".slide_thumbs");
     
     const {photographers} = await getPageData();
     const {media} = await getPageData();
@@ -98,12 +98,10 @@ async function displayThumbnails() {
 }
 
 
-async function init() {
-    const {photographers} = await getPageData();
-    displayArtistInfo(photographers);
-    const {media} = await getPageData();
-    displayGallery(media);
-    displayThumbnails(media);
+function init() {
+    displayArtistInfo();
+    displayGallery();
+    displayThumbnails();
 }
 
 init();
